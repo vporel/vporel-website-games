@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f1e7;
+  --surface: #fffdf8;
+  --surface-2: #f3ecdf;
+  --field: #efe7d8;
+  --border: #e3d8c3;
+  --text: #2a2118;
+  --muted: #7a6b58;
+  --primary: #e5484d;
+  --primary-ink: #ffffff;
+
+  --red: #e5484d;
+  --green: #2f9e66;
+  --yellow: #f2b200;
+  --blue: #3e63dd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17130f;
+    --surface: #231d17;
+    --surface-2: #2c251e;
+    --field: #19150f;
+    --border: #3a3128;
+    --text: #f4ece0;
+    --muted: #a8998a;
+    --primary: #ff6369;
+
+    --red: #ff6369;
+    --green: #3dd68c;
+    --yellow: #ffc53d;
+    --blue: #7b9bff;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-field: var(--field);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-yellow: var(--yellow);
+  --color-blue: var(--blue);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  background-image:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--red) 9%, transparent), transparent 40%),
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--blue) 9%, transparent), transparent 40%),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--yellow) 8%, transparent), transparent 45%);
+  background-attachment: fixed;
+  min-height: 100dvh;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 0.75rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--field);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+@keyframes rise-in {
+  0% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.rise-in {
+  animation: rise-in 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in { animation: none; }
+  * { transition: none !important; }
+}
